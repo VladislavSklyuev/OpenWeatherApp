@@ -23,7 +23,6 @@ class CurrentWeatherViewModel: ObservableObject {
 //            if let lat = ls.locationManager.location?.coordinate.latitude,
 //               let lon = ls.locationManager.location?.coordinate.longitude {
 
-                //print(lat, lon)
                 do {
                     let weather = try await NetworkService.shared.getCurrentWeather(lat: ls.latitude, lon: ls.longitude, measurement: currentLocale == "ru_RU" ? .metric : .imperial, lang: currentLocale == "ru_RU" ? .ru : .en)
                     print(weather.current.weather[0].icon)
@@ -39,7 +38,7 @@ class CurrentWeatherViewModel: ObservableObject {
                 }
             //}
         }
-        print(currentLocale)
+        //print(currentLocale)
         NetworkTimerService.shared.updateLastRequestTime()
         UDService.shared.setLastRequestTimeWith(date: NetworkTimerService.shared.lastRequestTime, key: "Last")
     }

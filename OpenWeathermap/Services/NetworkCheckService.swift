@@ -11,7 +11,7 @@ import Network
 final class NetworkCheckService: ObservableObject {
     static let shared = NetworkCheckService()
     private let monitor: NWPathMonitor
-    private(set) var isConnected = false
+    @Published var isConnected = false
     private(set) var isExpensive = false
     private(set) var currentConnectionType: NWInterface.InterfaceType?
     private let queue = DispatchQueue(label: "NetworkConnectivityMonitor")
@@ -23,7 +23,10 @@ final class NetworkCheckService: ObservableObject {
     
     func startMonitoring() {
         monitor.pathUpdateHandler = { [weak self] path in
-            self?.isConnected = path.status != .unsatisfied
+            DispatchQueue.main.async {
+                self?.isConnected = path.status != .unsatisfied
+            }
+            
             self?.isExpensive = path.isExpensive
             self?.currentConnectionType = NWInterface.InterfaceType.allCases.filter { path.usesInterfaceType($0) }.first
         }

@@ -87,7 +87,14 @@
 
     },
     "Нет последней загруженной погоды" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No busy weather"
+          }
+        }
+      }
     },
     "Ок" : {
       "localizations" : {
@@ -120,7 +127,14 @@
       }
     },
     "Повторите попытку" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try again"
+          }
+        }
+      }
     },
     "Поиск" : {
       "localizations" : {

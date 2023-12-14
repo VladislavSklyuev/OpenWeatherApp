@@ -25,14 +25,15 @@ struct FoundWeatherView: View {
                 ScrollView(showsIndicators: false) {
                     VStack {
                         VStack {
-                            Text(vm.currentGeo[0].localNames.ru).font(.title2)
-                            HStack {
-                                Text("\(ExtString().convert(temp: vm.currentWeather!.current.temp))°\(Locale.current.identifier == "ru_RU" ? "C" : "F")").font(.system(size: 80, weight: .thin))
-                                Image(vm.currentWeather!.current.weather[0].icon)
-                            }
-                            Text(vm.currentWeather!.current.weather[0].description)
-                            //Text("Макс.: \(String(format: "%.f", viewModel.currentWeatherData.main.tempMax))°, мин.: \(String(format: "%.f", viewModel.currentWeatherData.main.tempMin))°")
-                        }
+                            Text(vm.currentGeo[0].localNames.ru).font(.custom("SFUIText-Medium", size: 40)).bold()
+                                Text("\(ExtString().convert(temp: vm.currentWeather!.current.temp))°\(Locale.current.identifier == "ru_RU" ? "C" : "F")").font(.custom("SFUIText-Light", size: 90))
+
+                            Text(vm.currentWeather!.current.weather[0].description).font(.custom("SFProText-Medium", size: 20))
+                            Text("Макс.: \(String(format: "%.f", vm.currentWeather!.daily[0].temp.max))°, мин.: \(String(format: "%.f", vm.currentWeather!.daily[0].temp.min))°").font(.custom("SFProText-Medium", size: 20))
+                            Spacer()
+                        }.frame(height: 270)
+                        
+                        
                         
                         VStack(alignment: .leading) {
                             //                            HStack {
@@ -143,11 +144,12 @@ struct FoundWeatherView: View {
                                 }.padding(.vertical, 4)
                             }.padding(.horizontal).padding(.bottom)
                         }.background(.ultraThinMaterial).cornerRadius(12)
-                    }.padding().padding(.vertical, 40)
-                    
+                        Spacer()
+                    }.padding().padding(.vertical, 20)
                 }
                 
-            }.background(Image("stars").resizable().aspectRatio(contentMode: .fill)).ignoresSafeArea()
+            }//.background(Image("stars").resizable().aspectRatio(contentMode: .fill)).ignoresSafeArea()
+            .background(.gray)
         }
     }
 }

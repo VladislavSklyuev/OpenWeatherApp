@@ -12,7 +12,7 @@ struct MainView: View {
             TabView {
                 CurrentWeatherView().tabItem { Label("", systemImage: "location") }
                 SearchWeatherView().tabItem { Label("", systemImage: "list.dash") }
-            }
+            }.preferredColorScheme(.dark)
     }
 }
 

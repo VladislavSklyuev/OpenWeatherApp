@@ -9,11 +9,11 @@ import SwiftUI
 import CoreLocation
 
 struct StartView: View {
-    @StateObject var locationManager = LocationService()
+    @ObservedObject var locationManager = LocationService()
     
     var body: some View {
         if locationManager.status == .authorizedWhenInUse {
-            MainView().preferredColorScheme(.dark)
+            MainView()//.preferredColorScheme(.dark)
         } else {
             Text("Добро пожаловать в погодное приложение!").preferredColorScheme(.dark)
                 .onAppear(perform:locationManager.locationManager.requestWhenInUseAuthorization)

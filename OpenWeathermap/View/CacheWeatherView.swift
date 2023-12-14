@@ -16,16 +16,13 @@ struct CacheWeatherView: View {
             ScrollView(showsIndicators: false) {
                 VStack {
                     VStack {
-                        Text(ExtDate().convert3(unixTimestamp: viewModel.lastRequestTime))
-                        Text(viewModel.cacheWeather!.timezone).font(.title2)
-                        HStack {
-                            Text("\(ExtString().convert(temp: viewModel.cacheWeather!.current.temp))°").font(.system(size: 80, weight: .thin))
-                            Image(viewModel.cacheWeather!.current.weather[0].icon)
-                        }
-
-                        Text(viewModel.cacheWeather!.current.weather[0].description)
-                        //Text("Макс.: \(String(format: "%.f", viewModel.currentWeatherData.main.tempMax))°, мин.: \(String(format: "%.f", viewModel.currentWeatherData.main.tempMin))°")
-                    }
+                        Text(ExtDate().convert3(unixTimestamp: viewModel.lastRequestTime)).padding(.bottom, 10)
+                        Text(viewModel.cacheWeather!.timezone).font(.custom("SFUIText-Medium", size: 40)).bold()
+                        Text("\(ExtString().convert(temp: viewModel.cacheWeather!.current.temp))°").font(.custom("SFUIText-Light", size: 90))
+                        Text(viewModel.cacheWeather!.current.weather[0].description).font(.custom("SFProText-Medium", size: 20))
+                        Text("Макс.: \(String(format: "%.f", viewModel.cacheWeather!.daily[0].temp.max))°, мин.: \(String(format: "%.f", viewModel.cacheWeather!.daily[0].temp.min))°").font(.custom("SFProText-Medium", size: 20))
+                        Spacer()
+                    }.frame(height: 280)
                     
                     VStack(alignment: .leading) {
                         ScrollView(.horizontal, showsIndicators: false) {
@@ -132,9 +129,10 @@ struct CacheWeatherView: View {
                             }
                         }.padding(.horizontal).padding(.bottom)
                     }.background(.ultraThinMaterial).cornerRadius(12)
-                }.padding().padding(.vertical, 40)
+                }.padding().padding(.vertical, 20)
                 
-            }.background(Image("stars").resizable().aspectRatio(contentMode: .fill)).ignoresSafeArea()
+            }//.background(Image("stars").resizable().aspectRatio(contentMode: .fill)).ignoresSafeArea()
+            .background(.gray)
         }
     }
 }

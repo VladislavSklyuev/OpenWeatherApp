@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct OpenWeathermapApp: App {
     @ObservedObject var network = NetworkCheckService.shared
-    @ObservedObject var loc = LocationService()
+    var loc = LocationService()
     var body: some Scene {
         WindowGroup {
             if network.isConnected {

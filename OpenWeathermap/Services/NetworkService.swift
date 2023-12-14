@@ -34,8 +34,8 @@ class NetworkService {
         }
     }
     
-    func getFoundWeather(lat: Double, lon: Double, measurement: Measurement) async throws -> WeatherData {
-        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/onecall?lat=\(lat)&lon=\(lon)&appid=b9c81050cef9855eeaca27cf97ae5d26&units=\(measurement)&lang=ru")  else { throw NetworkError.badURL }
+    func getFoundWeather(lat: Double, lon: Double, measurement: Measurement, language: Language) async throws -> WeatherData {
+        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/onecall?lat=\(lat)&lon=\(lon)&appid=b9c81050cef9855eeaca27cf97ae5d26&units=\(measurement)&lang=\(language)")  else { throw NetworkError.badURL }
         let response = try await URLSession.shared.data(from: url)
         print(lat, lon)
         

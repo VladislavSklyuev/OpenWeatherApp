@@ -50,7 +50,7 @@ class SearchViewModel: ObservableObject {
         
         Task {
                 do {
-                    let weather = try await NetworkService.shared.getFoundWeather(lat: currentGeo[0].lat, lon: currentGeo[0].lon, measurement: Locale.current.identifier == "ru_RU" ? .metric : .imperial)
+                    let weather = try await NetworkService.shared.getFoundWeather(lat: currentGeo[0].lat, lon: currentGeo[0].lon, measurement: Locale.current.identifier == "ru_RU" ? .metric : .imperial, language: Locale.current.identifier == "ru_RU" ? .ru : .en)
                     DispatchQueue.main.async {
                         self.currentWeather = weather
                         self.cityName = ""

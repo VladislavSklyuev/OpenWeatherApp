@@ -11,8 +11,8 @@ import CoreLocation
 class LocationService: NSObject, CLLocationManagerDelegate, ObservableObject {
     let locationManager = CLLocationManager()
     @Published var status = CLAuthorizationStatus.notDetermined
-    @Published var latitude: Double = 0
-    @Published var longitude: Double = 0
+    @Published var latitude: Double?
+    @Published var longitude: Double?
     
     override init() {
         super.init()

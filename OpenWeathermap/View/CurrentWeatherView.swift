@@ -17,7 +17,7 @@ struct CurrentWeatherView: View {
                 ScrollView(showsIndicators: false) {
                     VStack {
                         VStack {
-                            Text("Текущее место").font(.custom("SFUIText-Regular", size: 40))
+                            Text("Текущее место").font(.custom("SFUIText-Regular", size: 35))
                             Text(viewModel.currentWeather!.timezone).font(.custom("SFUIText-Medium", size: 20)).bold()
                                 Text("\(ExtString().convert(temp: viewModel.currentWeather!.current.temp))°\(Locale.current.identifier == "ru_RU" ? "C" : "F")").font(.custom("SFUIText-Light", size: 90))
                                 //Image(viewModel.currentWeather!.current.weather[0].icon).resizable().aspectRatio(contentMode: .fill).frame(width: 80, height: 80)
@@ -26,7 +26,7 @@ struct CurrentWeatherView: View {
                             Text("Макс.: \(String(format: "%.f", viewModel.currentWeather!.daily[0].temp.max))°, мин.: \(String(format: "%.f", viewModel.currentWeather!.daily[0].temp.min))°").font(.custom("SFProText-Medium", size: 20))
                             Spacer()
 
-                        }.padding(.top, 40).frame(height: 300)
+                        }.frame(height: 270)
                         
                         VStack(alignment: .leading) {
 //                            HStack {
@@ -140,9 +140,10 @@ struct CurrentWeatherView: View {
                                 }
                             }.padding(.horizontal).padding(.bottom)
                         }.background(.ultraThinMaterial).cornerRadius(12).padding(.top, 8)
-                    }.padding().padding(.vertical, 40)
+                    }.padding().padding(.vertical, 20)
 
-                }.background(Image("stars").resizable().aspectRatio(contentMode: .fill)).ignoresSafeArea()
+                }//.background(Image("stars").resizable().aspectRatio(contentMode: .fill)).ignoresSafeArea()
+                .background(.gray)
         }
     }
 }

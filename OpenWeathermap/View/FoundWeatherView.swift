@@ -33,8 +33,6 @@ struct FoundWeatherView: View {
                             Spacer()
                         }.frame(height: 270)
                         
-                        
-                        
                         VStack(alignment: .leading) {
                             //                            HStack {
                             //                                Text("Ожидается дымка около 19:00").padding(.top).padding(.leading).foregroundStyle(.white)

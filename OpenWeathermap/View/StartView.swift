@@ -13,20 +13,10 @@ struct StartView: View {
     
     var body: some View {
         if locationManager.status == .authorizedWhenInUse {
-            MainView()//.preferredColorScheme(.dark)
+            MainView()
         } else {
             Text("Добро пожаловать в погодное приложение!").preferredColorScheme(.dark)
                 .onAppear(perform:locationManager.locationManager.requestWhenInUseAuthorization)
         }
     }
 }
-
-#Preview {
-    StartView()
-}
-
-//extension StartView: NSObject, CLLocationManagerDelegate {
-//    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-//        authorizationStatus = manager.authorizationStatus
-//    }
-//}

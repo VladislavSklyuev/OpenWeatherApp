@@ -15,7 +15,3 @@ struct MainView: View {
             }.preferredColorScheme(.dark)
     }
 }
-
-#Preview {
-    MainView()
-}

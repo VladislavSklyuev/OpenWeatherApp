@@ -36,9 +36,7 @@ class CurrentWeatherViewModel: ObservableObject {
                             } catch NetworkError.badResponse {
                                 print("Некорректный ответ")
                             }
-                                //print(lat, lon)
                         }
-                        
                     }
 
         NetworkTimerService.shared.updateLastRequestTime()

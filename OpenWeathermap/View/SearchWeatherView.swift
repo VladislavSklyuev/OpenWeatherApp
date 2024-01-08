@@ -99,7 +99,3 @@ struct SearchWeatherView: View {
             }
     }
 }
-
-#Preview {
-    SearchWeatherView()
-}

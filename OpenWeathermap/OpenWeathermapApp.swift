@@ -15,7 +15,6 @@ struct OpenWeathermapApp: App {
         WindowGroup {
             if network.isConnected {
                 StartView()
-                //MainView().preferredColorScheme(.dark)
             } else {
                 CacheWeatherView().preferredColorScheme(.dark)
             }

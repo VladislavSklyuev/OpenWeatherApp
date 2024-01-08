@@ -147,7 +147,3 @@ struct CurrentWeatherView: View {
         }
     }
 }
-
-#Preview {
-    CurrentWeatherView()
-}
